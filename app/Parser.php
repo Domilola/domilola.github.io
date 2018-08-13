@@ -49,4 +49,17 @@ class Parser
 		}
 		return 1;
 	}
+
+	/*
+	public function check_date(){
+		$db = self::getInstance();
+		$result = $db->query('SELECT * FROM date_parsers ORDER BY id DESC LIMIT 1');
+		$date = mysqli_fetch_all($result, MYSQLI_ASSOC);
+		$today_date = date("Y-m-d");
+		$difference = date('d', strtotime($today_date)) - date('d', strtotime($date[0]['date_pars']));
+		if($difference > 0){
+			$this->array_formation();
+		}
+	}
+	*/	
 }
