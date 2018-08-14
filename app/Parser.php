@@ -7,7 +7,11 @@ class Parser
 	public function array_formation(){
 		$pages = array();
 		$pages[] = 'http://filmix.cc/persons';
-		for ($i=2; $i <= 9999; $i++) { 
+		$html = curl_get('http://filmix.cc/persons');
+		$dom = str_get_html($html);
+		$last_link = $dom->find('div[class=navigation-middle] a');
+		rsort($last_link);
+		for ($i=2; $i <= $last_link[0]->plaintext; $i++) { 
 			$pages[] = 'http://filmix.cc/persons/page/'.$i.'/';
 		}
 		$this->start_parse($pages);
